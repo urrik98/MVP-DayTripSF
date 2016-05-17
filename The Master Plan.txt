@@ -1,0 +1,8 @@
+1 Creating a simple node/express server that will ping the Yelp API
+2 Create a client and set up communication between the server and client
+3 Test the ability to make calls to Yelp from the client
+4 Create a form on the client to collect data to use in API queries
+5 Create a way to display the information returned in a useful way on the client
+6 Deploy to Heroku
+7 If time, create a database to store users, passwords and previous saved day trips
+8 If time, create a sister page called PubCrawlSF with a narrower scope, but similar functionalityf

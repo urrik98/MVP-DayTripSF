@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="client">
+  <head>
+    <title>DayTripSF</title>
+  </head>
+  <body>
+    <h1>Day Trip SF</h1>
+
+    <form ng-controller="FormController">
+      <input type="text" placeholder="Field 1" ng-model="field1">
+      <input type="text" placeholder="Field 2" ng-model="field2">
+      <input type="text" placeholder="Field 3" ng-model="field3">
+      <input type="text" placeholder="Field 4" ng-model="field4">
+      <input type="text" placeholder="Field 5" ng-model="field5">
+      <button ng-click="postToServer([field1, field2, field3, field4, field5]);">Get Activities</button>
+    </form>
+    <div ng-controller="displaycontroller">
+      <div ng-repeat="things in activities">
+        <h4>{{things}}</h4>
+      
+    </div>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="angularapp.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,17 @@
+{
+  "name": "daytripsf",
+  "version": "1.0.0",
+  "description": "a simple web app to plan your outing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "adam renschen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "path": "^0.12.7",
+    "yelp": "^1.0.1"
+  }
+}
