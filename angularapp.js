@@ -1,7 +1,7 @@
 
 angular.module('client',[])
 
-.controller('displaycontroller', function($scope, getActivities) {
+.controller('DisplayController', function($scope, getActivities) {
   angular.extend($scope, getActivities);
 })
 
@@ -12,26 +12,32 @@ angular.module('client',[])
 .factory('getActivities', function($http) {
   var activities = [];
 
-  var getSearchParams = function(fieldData) {
-    console.log(fieldData);
+  var formatPhone = function(phone) {
+    if (phone.length === 10) {
+      return phone = "("+ phone.slice(0,3) + ")" + phone.slice(3, 10);
+    }
   };
 
   var postToServer = function(data) {
-    $http.post('/findStuff', data)
-    .then(function(response) {
-      console.log(response)
-      response.data.forEach(function(datum) {
-        console.log(datum)
-        activities.push(datum);
-      })}
-    , function() {console.log("failure")})
-    console.log(activities)
+    activities.length = 0;
+    console.log(data)
+    data.forEach(function(term){
+      if (term) {
+        $http.post('/findStuff', [term])
+        .then(function(response) {
+          console.log("response.data: ",response.data)
+          response.data.phone = formatPhone(response.data.phone);
+          activities.push(response.data);
+        }
+        ,function() {console.log("failure")})
+      }
+    });
   };
 
   return {
     postToServer: postToServer,
-    getSearchParams: getSearchParams,
-    activities:activities
+    activities:activities,
+    formatPhone:formatPhone
   };
 
 
