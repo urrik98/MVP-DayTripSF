@@ -31,8 +31,7 @@ var yelp = new Yelp({
 function askYelp(term) {
   yelp.search({ term: term, location: 'san francisco'})
   .then(function(data) {
-    var bestRating = 0;
-    var bestMatch;
+    var bestRating = 0; var bestMatch;
     data.businesses.forEach( function(business) {
       if (business.rating > bestRating) {
         bestRating = business.rating;
@@ -50,17 +49,25 @@ function askYelp(term) {
 
 app.post('/findStuff', function(req, res) {
   console.log(req.body);
-  var queries = req.body.map(function(term) {
-    return askYelp(term);
+  var queries = req.body.filter(function(term) {
+    if (term) {
+      return new Promise(function(resolve,reject) {
+        askYelp(term);
+      });
+    }
   });
-  var responseData = Promise.all(queries).then(function(array){
-    console.log("All promises answered ", array.length);
+
+  var r = Promise.all(queries)
+  .then(function(r){
+    console.log("All promises answered ", r);
     return array
-  }).
-  then(function(array) {
-    console.log(array);
   })
+  // .then(function(array) {
+  //   console.log("array: ",array);
+  // })
+
   res.send(['cable car', 'hyatt', 'westin st. francis']);
+
 });
 
 //ADAM, PROBLEM RESOLVED. LOOK AT LINE 8. SHOULD BE USING express.static to serve up your files
