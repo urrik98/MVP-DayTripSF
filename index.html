@@ -11,13 +11,13 @@
 
     <div class="container">
       <form ng-controller="FormController">
-        <p>Tell me what you want to do, I'll tell you where to go</p>
+        <p class="flavor_text">What are you up for today?</p>
         <input type="text" placeholder="Field 1" ng-model="field1">
         <input type="text" placeholder="Field 2" ng-model="field2">
         <input type="text" placeholder="Field 3" ng-model="field3">
         <input type="text" placeholder="Field 4" ng-model="field4">
         <input type="text" placeholder="Field 5" ng-model="field5">
-        <button ng-click="postToServer([field1, field2, field3, field4, field5]);">Get Activities</button>
+        <button ng-click="postToServer([field1, field2, field3, field4, field5]);">Show Me</button>
       </form>
     </div>
 

@@ -14,7 +14,7 @@ angular.module('client',[])
 
   var formatPhone = function(phone) {
     if (phone.length === 10) {
-      return phone = "("+ phone.slice(0,3) + ")" + phone.slice(3, 10);
+      return phone = "("+ phone.slice(0,3) + ") " + phone.slice(3, 6) + "-" + phone.slice(6, 10);
     }
   };
 
