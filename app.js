@@ -20,7 +20,9 @@ app.post('/findStuff', function(req, res) {
 //ADAM, PROBLEM RESOLVED. LOOK AT LINE 8. SHOULD BE USING express.static to serve up your files
 // app.listen(4000);
 console.log('server is running');
-app.listen(port);
+app.listen(port, function() {
+  console.log("listening on localhost: ",port);
+});
 
 
 

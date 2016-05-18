@@ -8,7 +8,6 @@ var yelp = new Yelp({
 });
 
 var choose = function(data) {
-  console.log(data.businesses[0]);
   var bestRating = 0; var reviews = 0;
   var winner = {};
   data.businesses.forEach( function(business) {

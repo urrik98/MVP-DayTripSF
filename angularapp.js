@@ -20,12 +20,10 @@ angular.module('client',[])
 
   var postToServer = function(data) {
     activities.length = 0;
-    console.log(data)
     data.forEach(function(term){
       if (term) {
         $http.post('/findStuff', [term])
         .then(function(response) {
-          console.log("response.data: ",response.data)
           response.data.phone = formatPhone(response.data.phone);
           activities.push(response.data);
         }

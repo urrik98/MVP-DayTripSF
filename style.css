@@ -58,3 +58,8 @@ h1 {
 .thumbnail {
   float:right;
 }
+
+.yelp_logo {
+  margin: auto;
+  margin-top:2px;
+}
