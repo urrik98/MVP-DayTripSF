@@ -9,20 +9,13 @@ var port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname));
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.post('/findStuff', function(req, res) {
+app.post('/callYelp', function(req, res) {
   Yelp.askYelp(req.body[0], res);
 });
 
-//ADAM, PROBLEM RESOLVED. LOOK AT LINE 8. SHOULD BE USING express.static to serve up your files
-// app.listen(4000);
-console.log('server is running');
 app.listen(port, function() {
   console.log("listening on localhost: ",port);
 });
-
-
-

@@ -21,22 +21,23 @@
       </form>
     </div>
 
-    <div class="container"ng-controller="DisplayController" ng-hide="!activities.length">
-      <div class="suggestion_container"ng-repeat="things in activities">
+    <div class="container" ng-controller="DisplayController">
+      <div class="suggestion_container" ng-repeat="loc in results">
         <div class="text_data">
-          <img class="thumbnail" ng-src="{{things.image_url}}">
-          <h3>{{things.name}}</h3>
+          <img class="thumbnail" ng-src="{{loc.image_url}}">
+          <h3>{{loc.name}}</h3>
+          <img ng-src="{{loc.rating_img_url}}" />
+          <p>{{loc.snippet_text}}</p>
 
-          <p class="location">{{things.location[0]}}, {{things.location[1]}}</p>
-          <p class="phone">{{things.phone}} <a class="yelp_link" ng-href="{{things.url}}">Yelp page</a></p>
-          <p class="search_term">search result for: {{things.search_term}}</p>
+          <p class="location">{{loc.location[0]}}, {{loc.location[1]}}</p>
+          <p class="phone">{{loc.phone}} <a class="yelp_link" ng-href="{{loc.url}}">Yelp page</a></p>
+          <p class="search_term">search result for: {{loc.search_term}}</p>
 
-        </div> 
-      </div>   
-      <img class="yelp_logo"src="yelp-logo-xsmall@3x.png"> 
+        </div>
+      </div>
+      <img class="yelp_logo"src="yelp-logo-xsmall@3x.png">
     </div>
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="angularapp.js"></script>
   </body>
 </html>
-

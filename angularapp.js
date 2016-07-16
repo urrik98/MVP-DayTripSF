@@ -10,32 +10,32 @@ angular.module('client',[])
 })
 
 .factory('getActivities', function($http) {
-  var activities = [];
+  var results = [];
 
   var formatPhone = function(phone) {
       return phone = "("+ phone.slice(0,3) + ") " + phone.slice(3, 6) + "-" + phone.slice(6, 10);
   };
 
   var postToServer = function(data) {
-    activities.length = 0;
+    console.log("data to server", data);
+    results.length = 0;
     data.forEach(function(term){
       if (term) {
-        $http.post('/findStuff', [term])
+        $http.post('/callYelp', [term])
         .then(function(response) {
           response.data.phone = formatPhone(response.data.phone);
-          activities.push(response.data);
-        }
-        ,function() {console.log("failure")})
+          results.push(response.data);
+          console.log(results);
+        })
       }
     });
   };
 
   return {
     postToServer: postToServer,
-    activities:activities,
-    formatPhone:formatPhone
+    results: results,
+    formatPhone: formatPhone
   };
 
 
 })
-
