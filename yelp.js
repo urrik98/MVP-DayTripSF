@@ -7,30 +7,33 @@ var yelp = new Yelp({
   token_secret:'D4W6WFkDcsxrADvwLMcv3ZrDJdA'
 });
 
-var choose = function(data) {
+var filterAPIResults = function(data, search_term) {
   var bestRating = 0; var reviews = 0;
-  var winner = {};
+  var winners = [];
   data.businesses.forEach( function(business) {
-    if (business.rating > bestRating && business.review_count > reviews && business.is_closed === false) {
-      bestRating = business.rating; reviews = business.review_count;
-      winner.name = business.name;
-      winner.location = business.location.display_address;
-      winner.snippet_text = business.snippet_text;
-      winner.image_url = business.image_url;
-      winner.url = business.url;
-      winner.phone = business.phone;
-      winner.rating_img_url = business.rating_img_url;
+    if (business.rating > 3 && business.is_closed === false) {
+      var result = {};
+
+      result.name = business.name;
+      result.location = business.location.display_address;
+      result.snippet_text = business.snippet_text;
+      result.image_url = business.image_url;
+      result.url = business.url;
+      result.phone = business.phone;
+      result.rating_img_url = business.rating_img_url;
+      result.search_term = search_term;
+
+      winners.push(result);
     }
   });
-  return winner;
+  return winners;
 };
 
 module.exports.askYelp = function(term, res) {
   yelp.search({ term: term, location: 'san francisco'})
   .then(function(data) {
-    var result = choose(data);
-    result.search_term = term;
-    res.send(result);
+    var results = filterAPIResults(data, term);
+    res.send(results);
   })
   .catch(function(err) {
     console.error(err)

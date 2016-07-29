@@ -20,6 +20,7 @@ h1 {
 }
 .flavor_text {
   text-align: center;
+	font-weight: bold;
 }
 .container {
 	margin: auto;
@@ -52,4 +53,5 @@ h1 {
 .yelp_logo {
   margin:auto;
   margin-top:12px;
+	width:80px;
 }

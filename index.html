@@ -11,13 +11,13 @@
 
     <div class="container">
       <form ng-controller="FormController">
-        <p class="flavor_text">Input a few things you might be up for today?</p>
+        <p class="flavor_text">Tell us some of the things you want to do today, and we'll show you where you can find them</p>
         <input type="text" placeholder="I'm interested in..." ng-model="field1">
         <input type="text" placeholder="and this" ng-model="field2">
         <input type="text" placeholder="and this" ng-model="field3">
         <input type="text" placeholder="also this" ng-model="field4">
         <input type="text" placeholder="and this too" ng-model="field5">
-        <button ng-click="postToServer([field1, field2, field3, field4, field5]);">Show Me</button>
+        <button ng-click="find([field1, field2, field3, field4, field5]);">Find It</button>
       </form>
     </div>
 
@@ -27,7 +27,7 @@
           <img class="thumbnail" ng-src="{{loc.image_url}}">
           <h3>{{loc.name}}</h3>
           <img ng-src="{{loc.rating_img_url}}" />
-          <p>{{loc.snippet_text}}</p>
+          <p ng-if="loc.snippet_text">"{{loc.snippet_text}}"</p>
 
           <p class="location">{{loc.location[0]}}, {{loc.location[1]}}</p>
           <p class="phone">{{loc.phone}} <a class="yelp_link" ng-href="{{loc.url}}">Yelp page</a></p>
